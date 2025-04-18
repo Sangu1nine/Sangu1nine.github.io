@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>회원가입</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="main-header">
+  <div class="logo">🎬 나의 영화관</div>
+  <nav class="top-nav">
+    <ul>
+      <li><a href="index.html">영화</a></li>
+      <li><a href="reserve.html">예매</a></li>
+      <li><a href="my_movie.html">My영화</a></li>
+      <li><a href="login.html">로그인</a></li>
+      <li><a href="signup.html">회원가입</a></li>
+    </ul>
+  </nav>
+</header>
+
+<h1>회원가입</h1>
+<form id="signup-form" class="reserve-form">
+  <label for="username">아이디</label>
+  <input type="text" id="username" required>
+
+  <label for="password">비밀번호</label>
+  <input type="password" id="password" required>
+
+  <button type="submit">회원가입</button>
+</form>
+
+<script>
+  const form = document.getElementById('signup-form');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value;
+    const validPw = /^[a-z0-9]{8,}$/;
+
+    if (!validPw.test(password)) {
+      alert("비밀번호는 소문자+숫자 조합 8자리 이상이어야 합니다.");
+      return;
+    }
+
+    let users = JSON.parse(localStorage.getItem('users') || '[]');
+    if (users.find(u => u.username === username)) {
+      alert("이미 존재하는 아이디입니다.");
+      return;
+    }
+
+    users.push({ username, password });
+    localStorage.setItem('users', JSON.stringify(users));
+    alert("회원가입 성공!");
+    form.reset();
+  });
+</script>
+</body>
+</html>

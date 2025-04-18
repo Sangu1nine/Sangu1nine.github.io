@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>영화 상세 정보</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="main-header">
+  <div class="logo">🎬 나의 영화관</div>
+  <nav class="top-nav">
+    <ul>
+      <li><a href="index.html">영화</a></li>
+      <li><a href="reserve.html">예매</a></li>
+      <li><a href="my_movie.html">My영화</a></li>
+      <li><a href="login.html">로그인</a></li>
+      <li><a href="signup.html">회원가입</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <h1 id="movie-title">로딩 중...</h1>
+  <section class="movie-detail">
+    <img id="movie-poster" src="" alt="영화 포스터">
+    <div id="movie-info"></div>
+  </section>
+</main>
+
+<script>
+  const query = new URLSearchParams(window.location.search);
+  const movieId = query.get("movie");
+
+  const movieData = {
+    1: { title: "고양이의 하루", director: "김감독", genre: "드라마", time: "120분", desc: "고양이의 인생 이야기", poster: "https://picsum.photos/id/1011/300/450" },
+    2: { title: "우주 탐험대", director: "이우주", genre: "SF", time: "130분", desc: "우주에서 살아남기", poster: "https://picsum.photos/id/1012/300/450" },
+    3: { title: "심해의 괴물", director: "심해감독", genre: "호러", time: "110분", desc: "심해 괴물의 습격", poster: "https://picsum.photos/id/1013/300/450" },
+    4: { title: "불멸의 검", director: "장무기", genre: "액션", time: "140분", desc: "복수를 위한 검", poster: "https://picsum.photos/id/1014/300/450" },
+    5: { title: "시간 여행자", director: "타임", genre: "SF", time: "125분", desc: "시간을 넘나드는 모험", poster: "https://picsum.photos/id/1015/300/450" },
+    6: { title: "댄싱 킹", director: "춤감독", genre: "뮤지컬", time: "115분", desc: "춤으로 인생 역전", poster: "https://picsum.photos/id/1016/300/450" },
+    7: { title: "사랑의 알고리즘", director: "AI감독", genre: "로맨스", time: "108분", desc: "AI가 짝을 찾아준다?", poster: "https://picsum.photos/id/1017/300/450" },
+    8: { title: "인공지능의 반란", director: "기계감독", genre: "SF", time: "132분", desc: "AI와의 전쟁", poster: "https://picsum.photos/id/1018/300/450" },
+    9: { title: "도시의 밤", director: "도시감독", genre: "느와르", time: "118분", desc: "밤의 도시 이야기", poster: "https://picsum.photos/id/1019/300/450" },
+    10: { title: "마법의 숲", director: "엘프감독", genre: "판타지", time: "125분", desc: "마법과 모험의 숲", poster: "https://picsum.photos/id/1020/300/450" }
+  };
+
+  const movie = movieData[movieId];
+  if (movie) {
+    document.getElementById("movie-title").textContent = movie.title;
+    document.getElementById("movie-poster").src = movie.poster;
+    document.getElementById("movie-info").innerHTML = `
+      <p><strong>감독:</strong> ${movie.director}</p>
+      <p><strong>장르:</strong> ${movie.genre}</p>
+      <p><strong>상영 시간:</strong> ${movie.time}</p>
+      <p><strong>줄거리:</strong> ${movie.desc}</p>
+      <a href="reserve.html?movie=${encodeURIComponent(movie.title)}">
+        <button>예매하러 가기</button>
+      </a>
+    `;
+  } else {
+    document.getElementById("movie-title").textContent = "영화를 찾을 수 없습니다.";
+  }
+</script>
+</body>
+</html>

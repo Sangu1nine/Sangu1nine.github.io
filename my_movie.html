@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>My영화</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="main-header">
+  <div class="logo">🎬 나의 영화관</div>
+  <nav class="top-nav">
+    <ul>
+      <li><a href="index.html">영화</a></li>
+      <li><a href="reserve.html">예매</a></li>
+      <li><a href="my_movie.html">My영화</a></li>
+      <li><a href="login.html">로그인</a></li>
+      <li><a href="signup.html">회원가입</a></li>
+    </ul>
+  </nav>
+</header>
+
+<h1>My영화</h1>
+<div id="reservation-list" class="reserve-form" style="width: auto;"></div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("loggedInUser"));
+  const container = document.getElementById("reservation-list");
+
+  if (!user) {
+    container.innerHTML = "<p>로그인 후 확인할 수 있습니다.</p>";
+  } else {
+    const allReservations = JSON.parse(localStorage.getItem("reservations") || '{}');
+    const myReservations = allReservations[user.username] || [];
+
+    if (myReservations.length === 0) {
+      container.innerHTML = `<p>${user.username}님의 예매 내역이 없습니다.</p>`;
+    } else {
+      const listHTML = myReservations.map((r, i) => `
+        <div style="margin-bottom:15px; border-bottom:1px solid #ccc; padding-bottom:10px;">
+          <strong>${i + 1}. 영화:</strong> ${r.movie}<br>
+          <strong>날짜:</strong> ${r.date}<br>
+          <strong>시간:</strong> ${r.time}<br>
+          <strong>좌석:</strong> ${r.seat} / <strong>인원:</strong> ${r.people}명
+        </div>
+      `).join('');
+      container.innerHTML = listHTML;
+    }
+  }
+</script>
+</body>
+</html>

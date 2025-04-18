@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>나의 영화관</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 상단 내비게이션 -->
+  <header class="main-header">
+    <div class="logo">🎬 나의 영화관</div>
+    <nav class="top-nav">
+      <ul>
+        <li><a href="index.html">영화</a></li>
+        <li><a href="reserve.html">예매</a></li>
+        <li><a href="theater.html">극장</a></li>
+        <li><a href="my_movie.html">My영화</a></li>
+        <li><a href="login.html">로그인</a></li>
+        <li><a href="signup.html">회원가입</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- 티저 영상 -->
+  <div class="teaser">
+    <iframe autoplay width="560" height="315" src="https://www.youtube.com/embed/J8qqMLZPPTo?si=IRSZBRQQIT5AjHCl?autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen allow="autoplay"></iframe>
+  </div>
+
+  <!-- 검색 바 -->
+  <div class="search-bar">
+    <input type="text" id="search-input" placeholder="영화 제목 검색">
+  </div>
+
+  <!-- 메인 콘텐츠 -->
+  <main class="main-content">
+    <h1>상영 중인 영화</h1>
+    <section id="movie-list" class="movie-list"></section>
+
+    <h2 id="theater">📍 극장 위치</h2>
+    <a href="https://map.kakao.com/?urlX=980098.0000003686&urlY=459647.0000000112&urlLevel=3&itemId=203969528&q=%EA%B5%AD%EB%A6%BD%EB%B6%80%EA%B2%BD%EB%8C%80%ED%95%99%EA%B5%90%20%EC%B0%BD%EC%9D%98%EA%B4%80&srcid=203969528&map_type=TYPE_MAP"><p>서부산 남구 용소로 45</p></a>
+    <img src = "images/theater_map.png" alt="극장 위치 지도" class="map-img" width="300" height="200">
+  </main>
+
+  <!-- 푸터 -->
+  <footer>ⓒ 2025 나의 영화관</footer>
+  <script src="movie-data.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

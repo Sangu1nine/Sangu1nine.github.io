@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>영화 예매</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 상단 내비게이션 -->
+  <header class="main-header">
+    <div class="logo">🎬 나의 영화관</div>
+    <nav class="top-nav">
+      <ul>
+        <li><a href="index.html">영화</a></li>
+        <li><a href="reserve.html">예매</a></li>
+        <li><a href="my_movie.html">My영화</a></li>
+        <li><a href="login.html">로그인</a></li>
+        <li><a href="signup.html">회원가입</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- 예매 폼 중앙 정렬 -->
+  <main>
+    <form class="reserve-form">
+      <h1>영화 예매</h1>
+
+      <label for="movie">영화 선택:</label>
+      <select id="movie" name="movie">
+        <option>고양이의 하루</option>
+        <option>우주 탐험대</option>
+        <option>불멸의 검</option>
+        <option>심해의 괴물</option>
+        <option>시간 여행자</option>
+        <option>댄싱 킹</option>
+        <option>사랑의 알고리즘</option>
+        <option>인공지능의 반란</option>
+        <option>도시의 밤</option>
+        <option>마법의 숲</option>
+      </select>
+
+      <label for="date">날짜 선택:</label>
+      <input type="date" id="date" name="date">
+
+      <label for="time">시간 선택:</label>
+      <select id="time" name="time">
+        <option>10:00</option>
+        <option>13:00</option>
+        <option>16:00</option>
+        <option>19:00</option>
+      </select>
+
+      <label for="people">인원 수:</label>
+      <input type="number" id="people" name="people" min="1" max="10">
+
+      <label for="seat">좌석 선택:</label>
+      <input type="text" id="seat" name="seat" placeholder="예: A5, B3">
+
+      <button type="submit">예매 완료</button>
+    </form>
+  </main>
+</body>
+</html>
